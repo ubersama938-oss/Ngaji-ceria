@@ -41,11 +41,11 @@ jobs:
           ICON=www/assets/images/icon-512.png
           RES=android/app/src/main/res
           if [ -f "$ICON" ]; then
-            magick "$ICON" -resize 48x48 "$RES/mipmap-mdpi/ic_launcher.png"
-            magick "$ICON" -resize 72x72 "$RES/mipmap-hdpi/ic_launcher.png"
-            magick "$ICON" -resize 96x96 "$RES/mipmap-xhdpi/ic_launcher.png"
-            magick "$ICON" -resize 144x144 "$RES/mipmap-xxhdpi/ic_launcher.png"
-            magick "$ICON" -resize 192x192 "$RES/mipmap-xxxhdpi/ic_launcher.png"
+            convert "$ICON" -resize 48x48 "$RES/mipmap-mdpi/ic_launcher.png"
+            convert "$ICON" -resize 72x72 "$RES/mipmap-hdpi/ic_launcher.png"
+            convert "$ICON" -resize 96x96 "$RES/mipmap-xhdpi/ic_launcher.png"
+            convert "$ICON" -resize 144x144 "$RES/mipmap-xxhdpi/ic_launcher.png"
+            convert "$ICON" -resize 192x192 "$RES/mipmap-xxxhdpi/ic_launcher.png"
             echo "✅ Icons generated successfully"
           else
             echo "⚠️ icon-512.png not found, skipping"
