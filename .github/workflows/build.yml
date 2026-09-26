@@ -24,11 +24,17 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
+      - name: Remove old android folder
+        run: rm -rf android
+
       - name: Add Android Platform
         run: npx cap add android
 
       - name: Sync Capacitor
-        run: npx cap sync
+        run: npx cap sync android
+
+      - name: List Capacitor plugins
+        run: npx cap ls android
 
       - name: Grant execute permission for gradlew
         run: chmod +x android/gradlew
