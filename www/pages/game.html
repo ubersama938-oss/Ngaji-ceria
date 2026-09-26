@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1A237E">
+    <title>Game Hijaiyah - Ngaji Ceria</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-game">
+
+    <header class="game-header">
+        <button class="btn-back" onclick="goBack()">←</button>
+        <h2>Game Hijaiyah</h2>
+        <div class="score-badge">
+            🪙 <span id="gameScore">0</span>
+        </div>
+    </header>
+
+    <div class="game-progress">
+        <div class="game-progress-text">Soal <span id="currentQ">1</span> / 10</div>
+        <div class="game-progress-bar">
+            <div class="game-progress-fill" id="gameProgressFill"></div>
+        </div>
+    </div>
+
+    <main class="game-area">
+        <div class="question-box">
+            <p class="question-label">Dengarkan suara ini:</p>
+            <button class="btn-listen" id="btnListen" onclick="playQuestion()">
+                🔊
+            </button>
+            <p class="question-hint" id="questionHint">Tekan tombol untuk mendengar</p>
+        </div>
+
+        <div class="answer-grid" id="answerGrid"></div>
+
+        <div class="feedback" id="feedback"></div>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <div class="modal-emoji" id="modalEmoji">🎉</div>
+            <h3 id="modalTitle">Hebat!</h3>
+            <p id="modalText">Kamu menyelesaikan 10 soal!</p>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <span class="modal-stat-icon">✅</span>
+                    <span class="modal-stat-value" id="statCorrect">0</span>
+                    <span class="modal-stat-label">Benar</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-icon">🪙</span>
+                    <span class="modal-stat-value" id="statPoints">0</span>
+                    <span class="modal-stat-label">Poin</span>
+                </div>
+            </div>
+            <button class="btn-play-again" onclick="restartGame()">Main Lagi 🔄</button>
+            <button class="btn-home" onclick="goBack()">Kembali ke Beranda</button>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/game.js"></script>
+</body>
+</html>

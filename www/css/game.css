@@ -1,0 +1,279 @@
+/* ===== HALAMAN GAME ===== */
+.page-game {
+    background: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 100%);
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #FFF;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.game-header h2 {
+    color: #E65100;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.score-badge {
+    background: linear-gradient(135deg, #FFB300, #FF6F00);
+    color: #FFF;
+    padding: 6px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 3px 0 #E65100;
+}
+
+.game-progress {
+    padding: 12px 16px 0;
+}
+
+.game-progress-text {
+    font-size: 12px;
+    color: #E65100;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.game-progress-bar {
+    height: 8px;
+    background: #FFF;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.game-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FFB300, #FF6F00);
+    width: 10%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.game-area {
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question-box {
+    background: #FFF;
+    border-radius: 24px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border: 3px solid #FFB300;
+}
+
+.question-label {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.btn-listen {
+    background: linear-gradient(135deg, #42A5F5, #1565C0);
+    color: #FFF;
+    border: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 48px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #0D47A1, 0 12px 25px rgba(21,101,192,0.3);
+    transition: all 0.15s;
+    animation: pulse 2s infinite;
+}
+
+.btn-listen:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #0D47A1;
+}
+
+.question-hint {
+    color: #999;
+    font-size: 11px;
+    margin-top: 12px;
+    font-style: italic;
+}
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.answer-btn {
+    background: #FFF;
+    border: 3px solid #FFB300;
+    border-radius: 20px;
+    padding: 20px 10px;
+    font-family: 'Amiri', serif;
+    font-size: 60px;
+    color: #1A237E;
+    cursor: pointer;
+    transition: all 0.15s;
+    box-shadow: 0 5px 0 #E65100;
+    line-height: 1;
+    position: relative;
+}
+
+.answer-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #E65100;
+}
+
+.answer-btn.correct {
+    background: linear-gradient(135deg, #66BB6A, #388E3C);
+    color: #FFF;
+    border-color: #2E7D32;
+    box-shadow: 0 5px 0 #1B5E20;
+    animation: popIn 0.4s ease-out;
+}
+
+.answer-btn.wrong {
+    background: linear-gradient(135deg, #EF5350, #C62828);
+    color: #FFF;
+    border-color: #B71C1C;
+    box-shadow: 0 5px 0 #7F0000;
+    animation: shake 0.4s;
+}
+
+.answer-btn:disabled {
+    cursor: not-allowed;
+}
+
+.feedback {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    min-height: 40px;
+    transition: all 0.3s;
+}
+
+.feedback.correct {
+    color: #2E7D32;
+    animation: popIn 0.4s;
+}
+
+.feedback.wrong {
+    color: #C62828;
+    animation: shake 0.4s;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show {
+    display: flex;
+    animation: popIn 0.4s ease-out;
+}
+
+.modal-card {
+    background: #FFF;
+    border-radius: 28px;
+    padding: 30px 24px;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 4px solid #FFB300;
+}
+
+.modal-emoji {
+    font-size: 70px;
+    margin-bottom: 10px;
+    animation: bounce 1s infinite;
+}
+
+.modal-card h3 {
+    font-size: 26px;
+    color: #1A237E;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.modal-card p {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.modal-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 24px;
+}
+
+.modal-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.modal-stat-icon { font-size: 24px; }
+.modal-stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #E65100;
+}
+.modal-stat-label {
+    font-size: 10px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-play-again, .btn-home {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 10px;
+}
+
+.btn-play-again {
+    background: linear-gradient(135deg, #66BB6A, #388E3C);
+    color: #FFF;
+    box-shadow: 0 5px 0 #1B5E20;
+}
+
+.btn-home {
+    background: linear-gradient(135deg, #78909C, #455A64);
+    color: #FFF;
+    box-shadow: 0 5px 0 #263238;
+    margin-bottom: 0;
+}
+
+.btn-play-again:active, .btn-home:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+}
