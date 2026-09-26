@@ -170,11 +170,7 @@ async function playSound() {
 // Tombol latihan
 function startPractice() {
     if (navigator.vibrate) navigator.vibrate([50, 30, 50]);
-    if (typeof playTapSound === "function") playTapSound();
-    showToast('🎯 Membuka mode latihan...');
-    setTimeout(() => {
-        window.location.href = "game.html";
-    }, 500);
+    showToast('🎯 Mode Latihan segera hadir!');
 }
 
 // Kembali
