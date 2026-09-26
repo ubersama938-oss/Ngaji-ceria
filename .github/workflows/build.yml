@@ -36,20 +36,69 @@ jobs:
       - name: Install ImageMagick
         run: sudo apt-get update && sudo apt-get install -y imagemagick
 
+      - name: Debug - Cek icon & folder mipmap
+        run: |
+          echo "=== Cek icon ==="
+          ls -lh www/assets/images/icon-512.png || echo "❌ Icon NOT FOUND"
+          echo ""
+          echo "=== Cek folder mipmap ==="
+          ls android/app/src/main/res/ | grep mipmap
+
       - name: Generate Android app icons
         run: |
+          set -e
           ICON=www/assets/images/icon-512.png
           RES=android/app/src/main/res
-          if [ -f "$ICON" ]; then
-            convert "$ICON" -resize 48x48 "$RES/mipmap-mdpi/ic_launcher.png"
-            convert "$ICON" -resize 72x72 "$RES/mipmap-hdpi/ic_launcher.png"
-            convert "$ICON" -resize 96x96 "$RES/mipmap-xhdpi/ic_launcher.png"
-            convert "$ICON" -resize 144x144 "$RES/mipmap-xxhdpi/ic_launcher.png"
-            convert "$ICON" -resize 192x192 "$RES/mipmap-xxxhdpi/ic_launcher.png"
-            echo "✅ Icons generated successfully"
-          else
-            echo "⚠️ icon-512.png not found, skipping"
+          
+          if [ ! -f "$ICON" ]; then
+            echo "❌ Icon not found at $ICON"
+            exit 1
           fi
+          
+          echo "✅ Icon found: $(ls -lh $ICON)"
+          
+          # Ukuran per dpi
+          declare -A SIZES=(
+            [mdpi]=48
+            [hdpi]=72
+            [xhdpi]=96
+            [xxhdpi]=144
+            [xxxhdpi]=192
+          )
+          
+          for dpi in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            FOLDER="$RES/mipmap-$dpi"
+            SIZE=${SIZES[$dpi]}
+            
+            if [ ! -d "$FOLDER" ]; then
+              echo "❌ Folder $FOLDER not found, skipping"
+              continue
+            fi
+            
+            echo "Generating $dpi ($SIZE x $SIZE)..."
+            
+            # Replace ic_launcher.png
+            convert "$ICON" -resize ${SIZE}x${SIZE} "$FOLDER/ic_launcher.png"
+            echo "  ✅ ic_launcher.png"
+            
+            # Replace ic_launcher_round.png if exists
+            if [ -f "$FOLDER/ic_launcher_round.png" ]; then
+              convert "$ICON" -resize ${SIZE}x${SIZE} "$FOLDER/ic_launcher_round.png"
+              echo "  ✅ ic_launcher_round.png"
+            fi
+            
+            # Replace ic_launcher_foreground.png if exists
+            if [ -f "$FOLDER/ic_launcher_foreground.png" ]; then
+              FG=$((SIZE * 2))
+              convert "$ICON" -resize ${FG}x${FG} "$FOLDER/ic_launcher_foreground.png"
+              echo "  ✅ ic_launcher_foreground.png ($FG x $FG)"
+            fi
+          done
+          
+          echo ""
+          echo "=== Result ==="
+          ls -lh $RES/mipmap-xxxhdpi/
+          echo "✅ All icons generated successfully"
 
       - name: Grant execute permission for gradlew
         run: chmod +x android/gradlew
