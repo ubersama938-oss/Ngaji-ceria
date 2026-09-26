@@ -46,11 +46,11 @@
             <p class="tagline">Belajar Mengaji Jadi Lebih Menyenangkan</p>
         </div>
         <div class="hero-characters">
-            <img src="assets/images/char-boy.png" class="char-boy" alt="Anak Cowok">
+            <span class="char-boy">👦</span>
             <div class="speech-bubble">
                 Yuk, lanjut belajar mengaji bersama teman-teman! 💖
             </div>
-            <img src="assets/images/char-girl.png" class="char-girl" alt="Anak Cewek">
+            <span class="char-girl">🧕</span>
         </div>
     </section>
 
