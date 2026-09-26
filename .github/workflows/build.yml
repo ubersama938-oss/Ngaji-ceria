@@ -33,8 +33,23 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: List Capacitor plugins
-        run: npx cap ls android
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Generate Android app icons
+        run: |
+          ICON=www/assets/images/icon-512.png
+          RES=android/app/src/main/res
+          if [ -f "$ICON" ]; then
+            magick "$ICON" -resize 48x48 "$RES/mipmap-mdpi/ic_launcher.png"
+            magick "$ICON" -resize 72x72 "$RES/mipmap-hdpi/ic_launcher.png"
+            magick "$ICON" -resize 96x96 "$RES/mipmap-xhdpi/ic_launcher.png"
+            magick "$ICON" -resize 144x144 "$RES/mipmap-xxhdpi/ic_launcher.png"
+            magick "$ICON" -resize 192x192 "$RES/mipmap-xxxhdpi/ic_launcher.png"
+            echo "✅ Icons generated successfully"
+          else
+            echo "⚠️ icon-512.png not found, skipping"
+          fi
 
       - name: Grant execute permission for gradlew
         run: chmod +x android/gradlew
