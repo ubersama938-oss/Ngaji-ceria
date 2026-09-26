@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1A237E">
+    <title>Huruf Hijaiyah - Ngaji Ceria</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/hijaiyah.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-hijaiyah">
+
+    <!-- HEADER -->
+    <header class="page-header">
+        <button class="btn-back" onclick="goBack()">←</button>
+        <h2>Huruf Hijaiyah</h2>
+        <div class="progress-mini">
+            <span id="progressText">1 / 28</span>
+        </div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
+
+    <!-- KARTU HURUF UTAMA -->
+    <main class="letter-container">
+        <div class="letter-card" id="letterCard">
+            <div class="letter-arabic" id="arabicLetter">ا</div>
+            <div class="letter-latin" id="latinLetter">Alif</div>
+            
+            <button class="btn-sound" onclick="playSound()">
+                🔊 <span>Dengarkan</span>
+            </button>
+        </div>
+
+        <!-- NAVIGASI PREV/NEXT -->
+        <div class="nav-buttons">
+            <button class="btn-nav prev" onclick="prevLetter()">
+                ⏮️ Sebelumnya
+            </button>
+            <button class="btn-nav next" onclick="nextLetter()">
+                Berikutnya ⏭️
+            </button>
+        </div>
+    </main>
+
+    <!-- INDICATOR HURUF (GRID MINI) -->
+    <div class="letters-strip" id="lettersStrip"></div>
+
+    <!-- TOMBOL LATIHAN -->
+    <button class="btn-practice" onclick="startPractice()">
+        🎯 Mulai Latihan
+    </button>
+
+    <script src="../js/hijaiyah.js"></script>
+</body>
+</html>

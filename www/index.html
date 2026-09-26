@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1A237E">
+    <title>Ngaji Ceria</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="app-header">
+        <div class="user-info">
+            <div class="avatar-container">
+                <span class="avatar">👦</span>
+                <span class="status-dot"></span>
+            </div>
+            <div class="user-text">
+                <p class="greeting">Assalamu'alaikum</p>
+                <h3 id="userName">Ananda Ahmad</h3>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-badge level-badge">
+                <span>⭐</span>
+                <span>Level <span id="levelNum">3</span></span>
+            </div>
+            <div class="stat-badge coin-badge">
+                <span>🪙</span>
+                <span id="coinNum">350</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO/BANNER ===== -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="app-title">
+                <span class="title-badge">Ngaji</span>
+                <span class="title-main">Ceria</span>
+            </h1>
+            <p class="tagline">Belajar Mengaji Jadi Lebih Menyenangkan</p>
+        </div>
+        <div class="hero-characters">
+            <span class="char-boy">👦</span>
+            <div class="speech-bubble">
+                Yuk, lanjut belajar mengaji bersama teman-teman! 💖
+            </div>
+            <span class="char-girl">🧕</span>
+        </div>
+    </section>
+
+    <!-- ===== MENU GRID ===== -->
+    <main class="menu-grid">
+        <div class="menu-card green" onclick="startMenu('iqra')">
+            <div class="icon">📖</div>
+            <h4>Iqra' 1 - 6</h4>
+            <p>Belajar membaca Al-Qur'an tahap demi tahap</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card purple" onclick="startMenu('hijaiyah')">
+            <div class="icon">🔤</div>
+            <h4>Huruf Hijaiyah</h4>
+            <p>Mengenal huruf hijaiyah dengan animasi dan suara</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card orange" onclick="startMenu('surat')">
+            <div class="icon">🕌</div>
+            <h4>Hafalan Surat Pendek</h4>
+            <p>Menghafal surat-surat pendek dengan mudah</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card pink" onclick="startMenu('doa')">
+            <div class="icon">🤲</div>
+            <h4>Doa Sehari-hari</h4>
+            <p>Doa sebelum makan, tidur, masuk/keluar rumah</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card blue" onclick="startMenu('listen')">
+            <div class="icon">🎧</div>
+            <h4>Dengarkan &amp; Tirukan</h4>
+            <p>Dengar bacaan, lalu coba ulangi</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card red" onclick="startMenu('game')">
+            <div class="icon">🎮</div>
+            <h4>Game Hijaiyah</h4>
+            <p>Belajar sambil bermain lebih seru</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card teal" onclick="startMenu('points')">
+            <div class="icon">⭐</div>
+            <h4>Poin &amp; Bintang</h4>
+            <p>Kumpulkan poin dan dapatkan hadiah</p>
+            <div class="card-arrow">→</div>
+        </div>
+
+        <div class="menu-card indigo" onclick="startMenu('map')">
+            <div class="icon">🗺️</div>
+            <h4>Petualangan Level</h4>
+            <p>Tingkatkan kemampuanmu di setiap level</p>
+            <div class="card-arrow">→</div>
+        </div>
+    </main>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab(this, 'home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Beranda</span>
+        </div>
+        <div class="nav-item" onclick="switchTab(this, 'materi')">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Materi</span>
+        </div>
+        <div class="nav-item" onclick="switchTab(this, 'game')">
+            <span class="nav-icon">🎮</span>
+            <span class="nav-label">Game</span>
+        </div>
+        <div class="nav-item" onclick="switchTab(this, 'rank')">
+            <span class="nav-icon">🏆</span>
+            <span class="nav-label">Peringkat</span>
+        </div>
+        <div class="nav-item" onclick="switchTab(this, 'profil')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profil</span>
+        </div>
+    </nav>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+

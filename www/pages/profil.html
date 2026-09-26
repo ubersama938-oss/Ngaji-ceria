@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Profil - Ngaji Ceria</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/rank-profil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-profil">
+
+    <header class="page-header-simple">
+        <button class="btn-back" onclick="goBack()">←</button>
+        <h2>👤 Profil</h2>
+        <div style="width: 40px;"></div>
+    </header>
+
+    <section class="profile-card">
+        <div class="profile-avatar-big">👦</div>
+        <h3 class="profile-name" id="profileName">Ananda Ahmad</h3>
+        <p class="profile-sub">Level <span id="profileLevel">3</span> • Pejuang Ngaji</p>
+        <div class="profile-level-bar">
+            <div class="profile-level-fill" style="width: 60%"></div>
+        </div>
+        <p class="profile-level-text">120 / 200 XP untuk Level berikutnya</p>
+    </section>
+
+    <section class="stats-grid">
+        <div class="stat-card"><div class="stat-icon">🪙</div><div class="stat-value" id="statCoins">350</div><div class="stat-label">Total Poin</div></div>
+        <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-value">2</div><div class="stat-label">Bintang</div></div>
+        <div class="stat-card"><div class="stat-icon">📖</div><div class="stat-value">15</div><div class="stat-label">Pelajaran</div></div>
+        <div class="stat-card"><div class="stat-icon">🎮</div><div class="stat-value">8</div><div class="stat-label">Game Selesai</div></div>
+    </section>
+
+    <section class="achievements">
+        <h3 class="section-title">🏅 Pencapaian</h3>
+        <div class="achievement-list">
+            <div class="achievement unlocked">
+                <div class="ach-icon">🌱</div>
+                <div class="ach-info"><div class="ach-name">Langkah Pertama</div><div class="ach-desc">Selesaikan 1 pelajaran</div></div>
+                <div class="ach-check">✅</div>
+            </div>
+            <div class="achievement unlocked">
+                <div class="ach-icon">🔤</div>
+                <div class="ach-info"><div class="ach-name">Kenal Hijaiyah</div><div class="ach-desc">Pelajari 10 huruf hijaiyah</div></div>
+                <div class="ach-check">✅</div>
+            </div>
+            <div class="achievement unlocked">
+                <div class="ach-icon">🎯</div>
+                <div class="ach-info"><div class="ach-name">Penembak Jitu</div><div class="ach-desc">Jawab 5 soal benar berturut-turut</div></div>
+                <div class="ach-check">✅</div>
+            </div>
+            <div class="achievement">
+                <div class="ach-icon">🏆</div>
+                <div class="ach-info"><div class="ach-name">Juara Ngaji</div><div class="ach-desc">Capai Level 5</div></div>
+                <div class="ach-check">🔒</div>
+            </div>
+            <div class="achievement">
+                <div class="ach-icon">🌟</div>
+                <div class="ach-info"><div class="ach-name">Bintang 10</div><div class="ach-desc">Kumpulkan 10 bintang</div></div>
+                <div class="ach-check">🔒</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-actions">
+        <button class="btn-action" onclick="alert('Fitur Mode Orang Tua akan hadir!')">👨‍👩‍👧 Mode Orang Tua</button>
+        <button class="btn-action danger" onclick="resetProgress()">🔄 Reset Progres</button>
+    </section>
+
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameEl = document.getElementById('profileName');
+            const lvlEl = document.getElementById('profileLevel');
+            const coinEl = document.getElementById('statCoins');
+            if (nameEl) nameEl.textContent = userState.name;
+            if (lvlEl) lvlEl.textContent = userState.level;
+            if (coinEl) coinEl.textContent = userState.coins;
+        });
+        function goBack() {
+            if (navigator.vibrate) navigator.vibrate(30);
+            window.location.href = '../index.html';
+        }
+        function resetProgress() {
+            if (confirm('Yakin mau reset semua progres?')) {
+                localStorage.removeItem('ngajiCeriaState');
+                showToast('✅ Progres direset!');
+                setTimeout(() => window.location.reload(), 1000);
+            }
+        }
+    </script>
+</body>
+</html>

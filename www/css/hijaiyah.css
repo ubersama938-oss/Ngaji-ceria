@@ -1,0 +1,240 @@
+/* ===== HALAMAN HIJAIYAH ===== */
+.page-hijaiyah {
+    background: linear-gradient(180deg, #E1F5FE 0%, #B3E5FC 100%);
+    padding-bottom: 20px;
+    min-height: 100vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #FFF;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.btn-back {
+    background: #1A237E;
+    color: #FFF;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #0D1554;
+    transition: all 0.15s;
+}
+
+.btn-back:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #0D1554;
+}
+
+.page-header h2 {
+    color: #1A237E;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.progress-mini {
+    background: #FFF3E0;
+    color: #EF6C00;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #FFE0B2;
+}
+
+/* PROGRESS BAR */
+.progress-bar-container {
+    height: 6px;
+    background: #E0E0E0;
+    margin: 0 16px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    width: 3.5%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+/* KARTU HURUF */
+.letter-container {
+    padding: 20px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.letter-card {
+    background: linear-gradient(135deg, #FFF, #F5F5F5);
+    border-radius: 30px;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    position: relative;
+    border: 4px solid #FFF;
+    animation: popIn 0.5s ease-out;
+}
+
+.letter-card::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: -8px; bottom: -8px;
+    border-radius: 36px;
+    background: linear-gradient(135deg, #FFD54F, #FF7043, #AB47BC, #42A5F5);
+    z-index: -1;
+    opacity: 0.4;
+    filter: blur(8px);
+}
+
+.letter-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 130px;
+    color: #1A237E;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 0 #FFD54F, 6px 6px 0 rgba(0,0,0,0.05);
+    animation: float 3s ease-in-out infinite;
+}
+
+.letter-latin {
+    font-size: 28px;
+    color: #455A64;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.btn-sound {
+    background: linear-gradient(135deg, #42A5F5, #1565C0);
+    color: #FFF;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #0D47A1;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-sound:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #0D47A1;
+}
+
+/* NAVIGASI */
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.btn-nav {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFF;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-nav.prev {
+    background: linear-gradient(135deg, #78909C, #455A64);
+    box-shadow: 0 4px 0 #263238;
+}
+
+.btn-nav.next {
+    background: linear-gradient(135deg, #66BB6A, #388E3C);
+    box-shadow: 0 4px 0 #1B5E20;
+}
+
+.btn-nav:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+}
+
+.btn-nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* STRIP HURUF MINI */
+.letters-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 16px;
+    margin: 10px 0;
+    scrollbar-width: none;
+}
+
+.letters-strip::-webkit-scrollbar { display: none; }
+
+.mini-letter {
+    min-width: 50px;
+    height: 50px;
+    background: #FFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    color: #1A237E;
+    cursor: pointer;
+    border: 2px solid #E0E0E0;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.mini-letter.active {
+    background: #1A237E;
+    color: #FFF;
+    border-color: #FFD54F;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(26,35,126,0.3);
+}
+
+/* TOMBOL LATIHAN */
+.btn-practice {
+    display: block;
+    margin: 10px auto 20px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #FFB300, #FF6F00);
+    color: #FFF;
+    border: none;
+    border-radius: 28px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #E65100, 0 10px 20px rgba(255,111,0,0.3);
+    transition: all 0.15s;
+}
+
+.btn-practice:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #E65100, 0 5px 10px rgba(255,111,0,0.3);
+}
