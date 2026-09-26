@@ -42,8 +42,7 @@ body::after {
 }
 
 /* Layer awan */
-body::before {
-    content: '';
+body.home-page::before {    content: '';
     position: fixed;
     top: 0;
     left: 0;
@@ -483,4 +482,22 @@ body::before {
 .toast.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Halaman dalam: tanpa awan & bulan ===== */
+body.inner-page::before {
+    display: none !important;
+}
+
+body.inner-page::after {
+    display: none !important;
+}
+
+body.inner-page {
+    background-image: none !important;
+}
+
+/* Background halaman dalam pakai gradient lembut */
+body.inner-page {
+    background: linear-gradient(180deg, #E1F5FE 0%, #B3E5FC 100%) !important;
 }
