@@ -1,5 +1,8 @@
-/* ===== KEYFRAME ANIMATIONS ===== */
+/* ============================================
+   NGAJI CERIA - Animations & 4D Effects
+   ============================================ */
 
+/* ===== KEYFRAMES DASAR ===== */
 @keyframes cloudMove {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100px); }
@@ -37,11 +40,188 @@
     100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ===== 1. ENTRANCE ANIMATIONS ===== */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply entrance animation */
+.animate-entrance {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+/* ===== 2. BOUNCE ON TAP ===== */
+.animate-bounce-tap {
+    animation: bounce 0.4s ease-out;
+}
+
+/* ===== 3. PARALLAX ===== */
+.parallax-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.parallax-clouds {
+    background-image: 
+        radial-gradient(ellipse 100px 50px at 20% 20%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(ellipse 80px 40px at 60% 30%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(ellipse 120px 60px at 80% 15%, rgba(255,255,255,0.5), transparent);
+    opacity: 0.6;
+    animation: parallaxMove 40s linear infinite;
+}
+
+@keyframes parallaxMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200px); }
+}
+
+/* ===== 4. FLOATING PARTICLES (BINTANG) ===== */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    font-size: 16px;
+    opacity: 0;
+    animation: particleFloat 8s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-100px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.5);
+    }
+}
+
+/* ===== 5. RIPPLE EFFECT ===== */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleAnim 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ===== 6. PAGE TRANSITIONS ===== */
+.page-enter {
+    animation: pageEnter 0.4s ease-out;
+}
+
+.page-exit {
+    animation: pageExit 0.3s ease-in forwards;
+}
+
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pageExit {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+}
+
+/* ===== UTILITY ANIMATIONS ===== */
 .animate-pulse { animation: pulse 1.5s infinite; }
 .animate-shake { animation: shake 0.4s; }
 .animate-pop { animation: popIn 0.4s ease-out; }
 .animate-float { animation: float 3s ease-in-out infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+.animate-bounce { animation: bounce 2s ease-in-out infinite; }
 
+/* ===== CONFETTI ===== */
 .confetti {
     position: fixed;
     width: 10px;
@@ -50,4 +230,93 @@
     z-index: 1000;
     pointer-events: none;
     animation: confettiFall 3s linear forwards;
+}
+
+/* ===== CARD HOVER / PRESS 3D EFFECT ===== */
+.menu-card, .answer-btn, .btn-nav, .btn-sound, .btn-practice, 
+.btn-listen, .btn-play-again, .btn-home, .stat-badge {
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    will-change: transform;
+}
+
+.menu-card:active,
+.answer-btn:active,
+.btn-nav:active:not(:disabled),
+.btn-sound:active,
+.btn-practice:active,
+.btn-listen:active,
+.btn-play-again:active,
+.btn-home:active {
+    transform: translateY(4px) scale(0.97);
+}
+
+/* ===== SHIMMER / SHINE EFFECT ===== */
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+    animation: shimmerMove 3s ease-in-out infinite;
+}
+
+@keyframes shimmerMove {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* ===== LETTER FLOAT ===== */
+.letter-arabic {
+    animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 
+            3px 3px 0 #FFD54F, 
+            6px 6px 0 rgba(0,0,0,0.05),
+            0 0 20px rgba(255, 213, 79, 0.5);
+    }
+    50% {
+        text-shadow: 
+            3px 3px 0 #FFD54F, 
+            6px 6px 0 rgba(0,0,0,0.05),
+            0 0 40px rgba(255, 213, 79, 0.9);
+    }
+}
+
+/* ===== STAGGERED ENTRANCE ===== */
+.stagger-item {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+.stagger-item:nth-child(6) { animation-delay: 0.3s; }
+.stagger-item:nth-child(7) { animation-delay: 0.35s; }
+.stagger-item:nth-child(8) { animation-delay: 0.4s; }
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+    /* Biarkan default, tapi siapkan kalau mau dark mode */
 }

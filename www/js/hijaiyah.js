@@ -101,6 +101,7 @@ function renderStrip() {
 
 // Navigasi
 function nextLetter() {
+    if (typeof playTapSound === "function") playTapSound();
     if (currentIndex < hijaiyahData.length - 1) {
         currentIndex++;
         renderLetter();
@@ -109,6 +110,7 @@ function nextLetter() {
 }
 
 function prevLetter() {
+    if (typeof playTapSound === "function") playTapSound();
     if (currentIndex > 0) {
         currentIndex--;
         renderLetter();
