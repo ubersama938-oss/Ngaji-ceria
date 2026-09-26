@@ -117,7 +117,7 @@ function prevLetter() {
 }
 
 // Putar suara huruf (sementara pakai Web Speech API)
-async function playSound() {
+function playSound() {
     const letter = hijaiyahData[currentIndex];
     
     const btn = event ? event.currentTarget : null;
@@ -134,24 +134,6 @@ async function playSound() {
         setTimeout(() => { arabicEl.style.animation = "float 3s ease-in-out infinite"; }, 700);
     }
     
-    // Coba pakai Native TTS Capacitor dulu
-    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
-        try {
-            await window.Capacitor.Plugins.TextToSpeech.speak({
-                text: letter.lat,
-                lang: "id-ID",
-                rate: 0.85,
-                pitch: 1.5,
-                volume: 1.0,
-                category: "ambient"
-            });
-            return;
-        } catch (e) {
-            console.log("Native TTS gagal, fallback ke Web Speech API:", e);
-        }
-    }
-    
-    // Fallback: Web Speech API
     if ("speechSynthesis" in window) {
         speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(letter.lat);
@@ -159,6 +141,9 @@ async function playSound() {
         utterance.pitch = 1.8;
         utterance.rate = 0.85;
         utterance.volume = 1.0;
+        const voices = speechSynthesis.getVoices();
+        const idVoice = voices.find(v => v.lang && v.lang.includes("id"));
+        if (idVoice) utterance.voice = idVoice;
         speechSynthesis.speak(utterance);
     } else {
         showToast("🔊 " + letter.lat);

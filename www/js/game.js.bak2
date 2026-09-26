@@ -1,4 +1,4 @@
-async function playQuestion() {
+function playQuestion() {
     if (!gameState.currentAnswer) return;
     
     const letter = gameState.currentAnswer;
@@ -11,25 +11,6 @@ async function playQuestion() {
     
     if (navigator.vibrate) navigator.vibrate(50);
     
-    // Coba pakai Native TTS Capacitor dulu
-    if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
-        try {
-            await window.Capacitor.Plugins.TextToSpeech.speak({
-                text: letter.lat,
-                lang: "id-ID",
-                rate: 0.8,
-                pitch: 1.5,
-                volume: 1.0,
-                category: "ambient"
-            });
-            document.getElementById("questionHint").textContent = "Mendengarkan: " + letter.lat;
-            return;
-        } catch (e) {
-            console.log("Native TTS gagal:", e);
-        }
-    }
-    
-    // Fallback: Web Speech API
     if ("speechSynthesis" in window) {
         speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(letter.lat);
@@ -37,6 +18,9 @@ async function playQuestion() {
         utterance.pitch = 1.8;
         utterance.rate = 0.8;
         utterance.volume = 1.0;
+        const voices = speechSynthesis.getVoices();
+        const idVoice = voices.find(v => v.lang && v.lang.includes("id"));
+        if (idVoice) utterance.voice = idVoice;
         speechSynthesis.speak(utterance);
         document.getElementById("questionHint").textContent = "Mendengarkan: " + letter.lat;
     } else {
